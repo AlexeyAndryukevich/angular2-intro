@@ -3,6 +3,15 @@
     <h1>{{title}}</h1>
 </header>
 <main>
+        <!--titleInput.value='' - Логика помещена в шаблон - так нельзя!-->    
+    <form  class="todo-form" (submit)="create($event, titleInput.value); titleInput.value=''">
+        <!--#some - пометка DOM элемента как локальной переменной внутри шаблона-->        
+        <!--$event - передача объекта события-->  
+        <input type="text" placeholder="Что нужно сделать?" #titleInput>
+        <button type="submit">Добавить</button>
+    </form>
+
+
     <section class="todo-list" *ngIf="todos.length">
         <!--*ngSome - структурная директива - изменяет структуру DOM-->
         <!--[ngSome] - атрибутная директива - изменяет внешний вид или поведение элемента-->        
