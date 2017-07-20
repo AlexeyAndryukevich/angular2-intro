@@ -21,13 +21,13 @@ export class AppComponent {
     // свойства компонента:
     title: string = 'Angular 2Do';
     todos: Todo[] = todos;
+    newTodoTitle: string = '';
 
     //create(event: Event, input: HTMLInputElement) - в классе DOM элемент - мешать логику и манипулирование DOM не рекомендуется!
-    create(event: Event, title: string) {
-        event.preventDefault();
-
-        let todo = new Todo(title);
+    create() {
+        let todo = new Todo(this.newTodoTitle);
         this.todos.push(todo);
+        this.newTodoTitle='';
     }
 
     toggle(todo: Todo) {
