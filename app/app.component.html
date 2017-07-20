@@ -3,32 +3,6 @@
     <h1>{{title}}</h1>
 </header>
 <main>
-        <!--titleInput.value='' - Логика помещена в шаблон - так нельзя!-->    
-    <form  class="todo-form" (ngSubmit)="create(); todoForm.reset()" #todoForm="ngForm">
-        <!--#some - пометка DOM элемента как локальной переменной внутри шаблона-->
-        <!--$event - передача объекта события-->  
-        <input type="text" name="title" [(ngModel)]="newTodoTitle" placeholder="Что нужно сделать?" required>
-        <button type="submit" [disabled]="todoForm.form.invalid">Добавить</button>
-    </form>
-
-
-    <section class="todo-list" *ngIf="todos.length">
-        <!--*ngSome - структурная директива - изменяет структуру DOM-->
-        <!--[ngSome] - атрибутная директива - изменяет внешний вид или поведение элемента-->        
-        <div class="todo-item" *ngFor="let todo of todos"  [class.completed]="todo.completed">
-            <button class="checkbox icon" (click)="toggle(todo)">
-                <i class="material-icons">{{ todo.completed ? 'check_box' : 'check_box_outline_blank'}}</i>
-            </button>
-            <span class="title">
-                {{todo.title}}
-            </span>
-            <div class="actions">
-                <button class="delete icon" (click)="delete(todo)">
-                    <i class="material-icons">
-                        delete
-                    </i>
-                </button>
-            </div>
-        </div>
-    </section>
+    <todo-form></todo-form>
+    <todo-list></todo-list>
 </main>
