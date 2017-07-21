@@ -6,3 +6,7 @@
     width: 100%;
     background-color: white;
 }
+
+todo-item:not(:first-child) {
+    border-top: 1px solid rgba(0,0,0,.1);
+}
