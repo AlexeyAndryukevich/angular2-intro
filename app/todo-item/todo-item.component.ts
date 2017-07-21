@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+//EventEmitter создает объекты способные генерировать события, также они предостовляют интерфейс для подписки на эти события
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 import { Todo } from "../shared/todo";
 
 @Component({
@@ -8,5 +9,14 @@ import { Todo } from "../shared/todo";
     styleUrls: ['todo-item.component.css']
 })
 export class TodoItemComponent {
-    todo: Todo = new Todo ('sdgjns');
+    @Input() todo: Todo;
+    @Output() delete = new EventEmitter(); //тут хранится объект, генерирующий событие
+
+    toggle() {
+        this.todo.completed = !this.todo.completed;
+    }
+
+    onDelete() {
+        this.delete.emit(this.todo); //произойдет событие и в рез-те вызовется метод указанный в шаблоне, т.е. метод delete() у родительского компонента
+    }
 }
