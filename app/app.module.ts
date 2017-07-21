@@ -7,8 +7,7 @@ import { AppComponent } from "./app.component";
 import { TodoFormComponent } from "./todo-form/todo-form.component";
 import { TodoListComponent } from "./todo-list/todo-list.component";
 import { TodoItemComponent } from "./todo-item/todo-item.component";
-
-
+import { TodoService } from "./shared/todo.service";
 
 //главный (основной) модуль приложения
 @NgModule({
@@ -19,6 +18,7 @@ import { TodoItemComponent } from "./todo-item/todo-item.component";
         TodoListComponent,
         TodoItemComponent
     ], // регистрация компонента App в основном модуле приложения
+    providers: [TodoService], // регистрация сервисов
     bootstrap: [AppComponent] // что использовать для запуска приложения
     
 }) //декоратор

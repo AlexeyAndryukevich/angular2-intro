@@ -1,7 +1,7 @@
-import { Component, Input } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 
 import { Todo } from "../shared/todo";
-
+import { TodoService } from "../shared/todo.service";
 
 @Component({
     moduleId: module.id,
@@ -9,14 +9,22 @@ import { Todo } from "../shared/todo";
     templateUrl: 'todo-list.component.html',
     styleUrls: ['todo-list.component.css']
 })
-export class TodoListComponent {
-    @Input() todos: Todo[];
+export class TodoListComponent implements OnInit {
+    todos: Todo[];
+
+    constructor (private todoService: TodoService) {
+        this.todos = [];
+    }
+
+    ngOnInit() { //метод (lifecicle hook) который Анг вызовет в определенный момент - наш в момент инициализации компонента
+        this.todos = this.todoService.getTodos();
+    }
 
     delete(todo: Todo) {
-        console.log("delete");
-        let index = this.todos.indexOf(todo);
-        if(index > -1) {
-            this.todos.splice(index, 1);
-        }
+        this.todoService.deleteTodo(todo);
+    }
+
+    toggle (todo: Todo) {
+        this.todoService.toggleTodo(todo);
     }
 }
