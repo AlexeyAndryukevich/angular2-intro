@@ -17,7 +17,7 @@ export class TodoListComponent implements OnInit {
     }
 
     ngOnInit() { //метод (lifecicle hook) который Анг вызовет в определенный момент - наш в момент инициализации компонента
-        this.todos = this.todoService.getTodos();
+        this.todoService.getTodos().then(todos => this.todos = todos);
     }
 
     delete(todo: Todo) {
