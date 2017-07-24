@@ -1,6 +1,6 @@
 //EventEmitter создает объекты способные генерировать события, также они предостовляют интерфейс для подписки на эти события
 import { Component, Input, Output, EventEmitter } from "@angular/core";
-import { Todo } from "../shared/todo";
+import { Todo } from "../../shared/todo";
 
 @Component({
     moduleId: module.id,
